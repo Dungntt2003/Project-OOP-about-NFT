@@ -33,6 +33,16 @@ public class NFTs {
 	public String getTag() {
 		return this.tag;
 	}
+	
+	// Phương thức in thông tin
+    public void print() {
+        System.out.println("Title: " + this.title);
+        System.out.println("Author: " + this.author);
+        System.out.println("Date: " + this.date);
+        System.out.println("Tag: " + this.tag);
+        System.out.println("------------------------");
+    }
+    
 	// Phương thức search theo chuỗi tag/hashtag/keyword/title/author
 	public static void searchByString(List<NFTs> nftsList, String keyWord) {
 		String key = keyWord.toLowerCase();
@@ -48,8 +58,6 @@ public class NFTs {
             }
         }
 	}
-	
-	
 
 	// Phương thức search theo date
 	public static void searchByDate(List<NFTs> nftsList, String searchDate) {
