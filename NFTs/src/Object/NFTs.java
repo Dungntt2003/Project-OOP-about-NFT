@@ -33,6 +33,23 @@ public class NFTs {
 	public String getTag() {
 		return this.tag;
 	}
+	// Phương thức search theo chuỗi tag/hashtag/keyword/title/author
+	public static void searchByString(List<NFTs> nftsList, String keyWord) {
+		String key = keyWord.toLowerCase();
+        for (NFTs nft : nftsList) {
+            if (nft.getTitle().toLowerCase().contains(key) || 
+            	nft.getAuthor().toLowerCase().contains(key) || 
+            	nft.getTag().toLowerCase().contains(key)) {
+            	System.out.println("Title: " + nft.getTitle());
+                System.out.println("Author: " + nft.getAuthor());
+                System.out.println("Date: " + nft.getDate());
+                System.out.println("Tag: " + nft.getTag());
+                System.out.println("------------------------");
+            }
+        }
+	}
+	
+	
 
 	// Phương thức search theo date
 	public static void searchByDate(List<NFTs> nftsList, String searchDate) {
