@@ -40,19 +40,6 @@ public class Tweet extends NFTs{
         System.out.println("---------------------");
 	}
 
-//    public static void sortByLike(List<Tweet> tweetList) {
-//        // Sắp xếp theo like tăng dần
-//        tweetList.sort(Comparator.comparingInt(Tweet::getLike));
-//        
-//        // Sắp xếp theo likegiảm dần
-//        // Collections.sort(items, Comparator.comparingInt(Item::getLike).reversed());
-//
-//        // In ra danh sách đã sắp xếp
-//        for (Tweet tweet : tweetList) {
-//            tweet.print();
-//        }
-//	}
-
 	// Phương thức sắp xếp theo số lượt like
 	public static void sortByLike(List<Tweet> tweets) {
 		// Sắp xếp theo số lượt like thứ tự tăng dần
