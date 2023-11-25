@@ -24,7 +24,7 @@ public class NavigationController implements Initializable {
 
     @FXML
     void homepage(ActionEvent event) {
-    	layout.setCenter(sublayout);
+    	loadPage("homepage");
     }
 
     @FXML
