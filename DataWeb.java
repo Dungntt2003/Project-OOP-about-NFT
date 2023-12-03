@@ -9,6 +9,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class DataWeb {
 
@@ -27,37 +29,50 @@ public class DataWeb {
                 Connection connection = Jsoup.connect(url + "?page=" + page);
                 Document doc = connection.get();
 
-                Elements articles = doc.select("li.posts-listing__item");
+                Elements articles = doc.select("li[class*=group-][class*=inline][class*=mb-8]");
+
+                if (articles.isEmpty()) {
+                    System.out.println("Không tìm thấy yếu tố bài viết trên trang " + page);
+                    continue;
+                }
 
                 for (Element article : articles) {
                     JSONObject entry = new JSONObject();
 
-                    // Lấy thông tin về tác giả (author), ngày (date), lượt xem (views), và thẻ (tag)
-                    Element header = article.select("div.post-card-inline__header").first();
-                    Element meta = header.select("div.post-card-inline__meta").first();
-                    Element authorElement = meta.select("p.post-card-inline__author").first();
-                    Element dateElement = meta.select("time.post-card-inline__date").first();
+                    try {
+                        // Lấy thông tin về tác giả (author), ngày (date), lượt xem (views), và thẻ (tag)
+                        Element header = article.select("div.post-card-inline__header").first();
+                        Element meta = header.select("div.post-card-inline__meta").first();
+                        Element authorElement = meta.select("p.post-card-inline__author").first();
+                        Element dateElement = meta.select("time.post-card-inline__date").first();
 
-                    // Xử lý tên tác giả bỏ "by "
-                    String authorText = authorElement.text().replace("by ", "");
-                    entry.put("Author", authorText);
-                    entry.put("Date", dateElement.attr("datetime"));
+                        // Xử lý tiêu đề (title) để loại bỏ kí tự không mong muốn
+                        Element titleElement = article.select("span.post-card-inline__title").first();
+                        String titleText = titleElement.text().replaceAll("[\u2018\u2019]", "'").replace("\u2014", "-");
+                        entry.put("title", titleText);
 
-                    // Lấy lượt xem (views)
-                    Element stats = article.select("div.post-card-inline__stats").first();
-                    Element viewsElement = stats.select("span.post-card-inline__stats-item span").last();
-                    entry.put("Views", viewsElement.text().trim());
+                        // Xử lý tên tác giả bỏ "by "
+                        String authorText = authorElement.text().replace("by ", "");
+                        entry.put("author", authorText);
 
-                    // Lấy thẻ (tag)
-                    Element tagElement = article.select("span.post-card-inline__badge").first();
-                    entry.put("Tags", tagElement.text());
+                        // Lấy lượt xem (views)
+                        Element stats = article.select("div.post-card-inline__stats").first();
+                        Element viewsElement = stats.select("span.post-card-inline__stats-item span").last();
+                        entry.put("views", viewsElement.text().trim());
 
-                    // Xử lý tiêu đề (title) để loại bỏ kí tự không mong muốn
-                    Element titleElement = article.select("span.post-card-inline__title").first();
-                    String titleText = titleElement.text().replaceAll("[\u2018\u2019]", "'").replace("\u2014", "-");
-                    entry.put("Title", titleText);
+                        // Lấy thẻ (tag)
+                        Element tagElement = article.select("span.post-card-inline__badge").first();
+                        entry.put("tags", tagElement.text());
 
-                    jsonArray.put(entry);
+                        // Định dạng lại ngày
+                        String isoDate = dateElement.attr("datetime");
+                        String formattedDate = formatDate(isoDate);
+                        entry.put("date", formattedDate);
+
+                        jsonArray.put(entry);
+                    } catch (Exception e) {
+                        System.out.println("Lỗi khi xử lý một bài viết: " + e.getMessage());
+                    }
                 }
 
                 // Tạm dừng trong khoảng thời gian cố định trước khi lấy trang tiếp theo
@@ -76,6 +91,20 @@ public class DataWeb {
 
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
+        }
+    }
+
+    // Phương thức định dạng lại ngày
+    private static String formatDate(String isoDate) {
+        try {
+            SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = inputFormat.parse(isoDate);
+
+            SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy");
+            return outputFormat.format(date);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return isoDate; // Nếu có lỗi, trả về ngày ban đầu
         }
     }
 }
