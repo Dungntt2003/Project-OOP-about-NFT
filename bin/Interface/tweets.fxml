@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id = "Anchorlayout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="452.0" prefWidth="823.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interface.TweetController">
+   <children>
+      <Text fx:id="heading" layoutX="322.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TWEETS" textAlignment="CENTER" wrappingWidth="129.923828125">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Text>
+      <TableView fx:id="tableView" layoutX="42.0" layoutY="111.0" prefHeight="400.0" prefWidth="750.0">
+        <columns>
+          <TableColumn fx:id="dateColumn" prefWidth="111.0" text="Date" />
+          <TableColumn fx:id="titleColumn" prefWidth="205.0" text="Title" />
+            <TableColumn fx:id="authorColumn" minWidth="0.0" prefWidth="157.0" text="Author" />
+            <TableColumn fx:id="tagColumn" prefWidth="146.0" text="Tags" />
+            <TableColumn fx:id="likeColumn" minWidth="8.0" prefWidth="92.0" text="Like" />
+        </columns>
+      </TableView>
+      <TextField fx:id="searchText" layoutX="218.0" layoutY="68.0" prefHeight="25.0" prefWidth="384.0" promptText="Keyword : hashtag, title, author, date, .." />
+   </children>
+</AnchorPane>
