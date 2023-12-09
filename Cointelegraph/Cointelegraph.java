@@ -72,7 +72,7 @@ public class Cointelegraph {
                             // Lấy thẻ (tag)
                             String[] urlParts = url.split("/");
                             String tag = urlParts[urlParts.length - 1];
-                            entry.put("tag", tag);
+                            entry.put("tags", tag);
 
                             // Định dạng lại ngày
                             String isoDate = dateElement.attr("datetime");
