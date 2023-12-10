@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -16,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="452.0" prefWidth="823.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interface.CollectionController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="522.0" prefWidth="987.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interface.CollectionController">
    <children>
       <Text layoutX="269.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="COLLECTIONS" textAlignment="CENTER" wrappingWidth="178.15234375">
          <font>
@@ -29,7 +30,7 @@
          </font>
       </Label>
       <TextField fx:id="searchword" layoutX="253.0" layoutY="62.0" prefHeight="25.0" prefWidth="270.0" />
-      <TableView fx:id="tableView" layoutX="42.0" layoutY="111.0" prefHeight="400.0" prefWidth="750.0">
+      <TableView fx:id="tableView" layoutX="42.0" layoutY="111.0" prefHeight="400.0" prefWidth="688.0">
         <columns>
           <TableColumn fx:id="dateColumn" prefWidth="129.0" text="Date" />
           <TableColumn fx:id="titleColumn" prefWidth="116.0" text="Title" />
@@ -39,5 +40,29 @@
             <TableColumn fx:id="transactionColumn" prefWidth="77.0" text="Transaction" />
         </columns>
       </TableView>
+      <VBox alignment="TOP_CENTER" layoutX="764.0" layoutY="111.0" prefHeight="400.0" prefWidth="166.0">
+         <children>
+            <ImageView fitHeight="159.0" fitWidth="209.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/robotos-nfts-resized.jpg" />
+               </image>
+            </ImageView>
+            <Text fx:id="Text1" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="202.13671875">
+               <VBox.margin>
+                  <Insets bottom="20.0" top="10.0" />
+               </VBox.margin>
+            </Text>
+            <ImageView fitHeight="126.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/cover-1024x572.jpg" />
+               </image>
+            </ImageView>
+            <Text fx:id="Text2" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="204.13671875">
+               <VBox.margin>
+                  <Insets bottom="20.0" top="10.0" />
+               </VBox.margin>
+            </Text>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

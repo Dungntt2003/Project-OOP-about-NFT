@@ -16,42 +16,41 @@ import javafx.scene.layout.BorderPane;
 public class NavigationController implements Initializable {
 //	@FXML
 //	public Text contentText;
-    @FXML
-    private BorderPane layout;
+	@FXML
+	private BorderPane layout;
 
-    @FXML
-    private AnchorPane sublayout;
+	@FXML
+	private AnchorPane sublayout;
 
-    @FXML
-    void homepage(ActionEvent event) {
-    	loadPage("homepage");
-    }
+	@FXML
+	void homepage(ActionEvent event) {
+		loadPage("homepage");
+	}
 
-    @FXML
-    void tweets(ActionEvent event) {
-    	loadPage("tweets");
-    }
+	@FXML
+	void tweets(ActionEvent event) {
+		loadPage("tweets");
+	}
 
-    @FXML
-    void blogs(ActionEvent event) {
-    	loadPage("blogs");
-    }
+	@FXML
+	void blogs(ActionEvent event) {
+		loadPage("blogs");
+	}
 
-    @FXML
-    void collections(ActionEvent event) {
-    	loadPage("collections");
-    }
+	@FXML
+	void collections(ActionEvent event) {
+		loadPage("collections");
+	}
 
-    @FXML
-    void relation(ActionEvent event) {
-    	loadPage("relation");
-    }
+	@FXML
+	void relation(ActionEvent event) {
+		loadPage("relation");
+	}
 
-	
-	void loadPage (String Page) {
+	void loadPage(String Page) {
 		Parent rootParent = null;
 		try {
-			rootParent = FXMLLoader.load(this.getClass().getResource(Page +".fxml"));
+			rootParent = FXMLLoader.load(this.getClass().getResource(Page + ".fxml"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -62,7 +61,6 @@ public class NavigationController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		
 	}
 
 }
