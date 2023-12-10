@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.media.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
@@ -7,9 +8,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<BorderPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interface.RelationController">
+<BorderPane prefHeight="590.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interface.RelationController">
    <center>
-      <SplitPane dividerPositions="0.35" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <SplitPane dividerPositions="0.35" prefHeight="508.0" prefWidth="930.0" BorderPane.alignment="CENTER">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0">
                <children>
@@ -71,14 +72,17 @@
                </children>
             </AnchorPane>
         </items>
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
+         </BorderPane.margin>
       </SplitPane>
    </center>
    <top>
-      <AnchorPane prefHeight="89.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="81.0" prefWidth="953.0" BorderPane.alignment="CENTER">
          <children>
               <Label fx:id="titleLabel" layoutX="402.0" layoutY="14.0" text="NFTs Trending" textAlignment="CENTER" />
-            <TextField alignment="CENTER" layoutX="14.0" layoutY="48.0" promptText="Search" />
-                <Button fx:id="updateButton" alignment="CENTER" contentDisplay="CENTER" layoutX="201.0" layoutY="46.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="86.0" text="Update" />
+            <TextField alignment="CENTER" layoutX="38.0" layoutY="48.0" promptText="Search" />
+                <Button fx:id="updateButton" alignment="CENTER" contentDisplay="CENTER" layoutX="217.0" layoutY="48.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="Update" />
          </children>
       </AnchorPane>
    </top>

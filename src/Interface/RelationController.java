@@ -10,7 +10,6 @@ import Data.Tweet;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -125,31 +124,20 @@ public class RelationController implements Initializable {
 		tableTweets.setItems(tweetList);
 		tableBlogs.setItems(blogList);
 
-		FilteredList<Tweet> filteredTweets = new FilteredList<>(tweetList, t -> true);
-		FilteredList<Blog> filteredBlogs = new FilteredList<>(blogList, b -> true);
-		NFT selected = tableNFTs.getSelectionModel().getSelectedItem();
-		if (selected != null) {
-			filteredTweets.setPredicate(tweetList -> {
-				String lowerCaseFilter = selected.getTitle().toLowerCase();
-				if (tweetList.getTitle().toLowerCase() == lowerCaseFilter) {
-					return true;
-				}
-				return false;
-			});
-			SortedList<Tweet> sortedTweets = new SortedList<>(filteredTweets);
-			sortedTweets.comparatorProperty().bind(tableTweets.comparatorProperty());
-			tableTweets.setItems(sortedTweets);
+		FilteredList<Tweet> filteredData1 = new FilteredList<>(tweetList);
+		tableTweets.setItems(filteredData1);
 
-			filteredBlogs.setPredicate(blogList -> {
-				String lowerCaseFilter = selected.getTitle().toLowerCase();
-				if (blogList.getTitle().toLowerCase() == lowerCaseFilter) {
-					return true;
-				}
-				return false;
-			});
-			SortedList<Blog> sortedBlogs = new SortedList<>(filteredBlogs);
-			sortedBlogs.comparatorProperty().bind(tableBlogs.comparatorProperty());
-			tableBlogs.setItems(sortedBlogs);
-		}
+		FilteredList<Blog> filteredData2 = new FilteredList<>(blogList);
+		tableBlogs.setItems(filteredData2);
+
+		tableNFTs.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+			if (newSelection != null) {
+				String selectedName = newSelection.getTitle();
+				filteredData1
+						.setPredicate(tweet -> tweet.getTitle().toLowerCase().contains(selectedName.toLowerCase()));
+				filteredData2.setPredicate(blog -> blog.getTitle().toLowerCase().contains(selectedName.toLowerCase()));
+			}
+		});
+
 	}
 }
