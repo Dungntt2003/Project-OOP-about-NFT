@@ -24,7 +24,7 @@ public class NiftyGatewayScrapping {
 
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        int loadMore = 25;
+        int loadMore = 12;
         int i = 0;
 
         driver.get("https://www.niftygateway.com/marketplace?sortBy=recent&trending=true");
@@ -45,33 +45,24 @@ public class NiftyGatewayScrapping {
 //            List<WebElement> floorPrices = driver.findElements(By.xpath("//p[@class='MuiTypography-root MuiTypography-body1 css-1fiixjq']/span[1]/span"));
 //            List<WebElement> creators = driver.findElements(By.xpath("//div[@class='MuiBox-root css-1jgs0cu']/div[1]/p[2]/a"));
 
-//        	List<WebElement> collections = driver.findElements(By.xpath("//div[@role='cell']"));
-//            for (int k = 0; k < collections.size(); k++) {
-//            	WebElement currentCollection = collections.get(k);
-//            	CollectionNames.add(currentCollection.findElement(By.xpath("//div[@role='cell']/a/div/div[2]/p[1]")).getText());
-//                FloorPrices.add(currentCollection.findElement(By.xpath("//div[@role='cell']/a/div/div[2]/p[2]/span[1]/span")).getText());
-//                Creators.add(currentCollection.findElement(By.xpath("//div[@role='cell']/a/div/div[2]/div[2]/div[1]/p[2]/a")).getText());
-//                
-//            }
-        	
         	List<WebElement> collections = driver.findElements(By.xpath("//div[@role='cell']"));
-        	for (int k = 0; k < collections.size(); k++) {
-        	    WebElement currentCollection = collections.get(k);
-        	    CollectionNames.add(currentCollection.findElement(By.xpath(".//a/div/div[2]/p[1]")).getText());
-        	    FloorPrices.add(currentCollection.findElement(By.xpath(".//a/div/div[2]/p[2]/span[1]/span")).getText());
-        	    Creators.add(currentCollection.findElement(By.xpath(".//a/div/div[2]/div[2]/div[1]/p[2]/a")).getText());
-        	}
-
+            for (int k = 0; k < collections.size(); k++) {
+            	WebElement currentCollection = collections.get(k);
+            	CollectionNames.add(currentCollection.findElement(By.xpath("//div[@role='cell']/a/div/div[2]/p[1]")).getText());
+                FloorPrices.add(currentCollection.findElement(By.xpath("//div[@role='cell']/a/div/div[2]/p[2]/span[1]/span")).getText());
+                Creators.add(currentCollection.findElement(By.xpath("//div[@role='cell']/a/div/div[2]/div[2]/div[1]/p[2]/a")).getText());
+                
+            }
 
             js.executeScript("window.scrollTo(arguments[0], arguments[1])", lastHeight, lastHeight + 1440);
 
             try {
-                Thread.sleep(500);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
-            lastHeight = lastHeight + 1440;
+            lastHeight = lastHeight + 2500;
             i++;
         }
 
