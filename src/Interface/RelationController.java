@@ -96,6 +96,31 @@ public class RelationController implements Initializable {
 				new NFT("Animate", "Tom", "13/11/2023", tagStrings));
 		tableNFTs.setItems(nftsList);
 
+		FilteredList<NFTs> filteredData3 = new FilteredList<>(nftsList, b -> true);
+		keywordTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData3.setPredicate(NFTs -> {
+				if (newValue == null) {
+					return true;
+				}
+				
+				String searchKeyword = newValue.toLowerCase();
+				
+				if (NFTs.getTitle().toLowerCase().indexOf(searchKeyword) > -1) {
+					return true;
+				} else if (NFTs.getAuthor().toLowerCase().indexOf(searchKeyword) > -1) {
+					return true;
+				} else if (NFTs.getDate().toLowerCase().indexOf(searchKeyword) > -1) {
+					return true;
+				} else if (NFTs.getTag().toLowerCase().indexOf(searchKeyword) > -1) {
+					return true;
+				} else
+					return false;
+			});
+		});
+		SortedList<NFTs> sortedData3 = new SortedList<>(filteredData3);
+		sortedData3.comparatorProperty().bind(tableNFTs.comparatorProperty());
+		tableNFTs.setItems(sortedData3);
+
 		updateButton = new Button("Update");
 		updateButton.setOnAction(event -> {
 			// Cập nhật dữ liệu bảng hashtag
