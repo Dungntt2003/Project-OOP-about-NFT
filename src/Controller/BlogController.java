@@ -2,6 +2,7 @@ package Controller;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import GetDataFromJson.getBlog;
@@ -12,6 +13,7 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -45,6 +47,24 @@ public class BlogController implements Initializable {
 
 	@FXML
 	private Text TextImage2;
+
+	@FXML
+	private Button button1;
+
+	@FXML
+	private Button button2;
+
+	@FXML
+	private Button button3;
+
+	@FXML
+	private Button button4;
+
+	@FXML
+	private Button button5;
+
+	@FXML
+	private Text hotTagText;
 
 	ObservableList<Blog> blogs = FXCollections.observableArrayList();
 
@@ -87,6 +107,44 @@ public class BlogController implements Initializable {
 		SortedList<Blog> sortedList = new SortedList<Blog>(filteredList);
 		sortedList.comparatorProperty().bind(tableView.comparatorProperty());
 		tableView.setItems(sortedList);
+
+		/// tag button
+		ArrayList<String> tagList = data.getListTag();
+		button1.setText(tagList.get(0));
+		button2.setText(tagList.get(1));
+		button3.setText(tagList.get(2));
+		button4.setText(tagList.get(3));
+		button5.setText(tagList.get(4));
+
+		button1.setOnAction(e -> {
+			String tagToFilter = button1.getText();
+			tableView.setItems(dataList.filtered(blog -> blog.getTag().contains(tagToFilter)));
+		});
+		button2.setOnAction(e -> {
+			String tagToFilter = button2.getText();
+			tableView.setItems(dataList.filtered(blog -> blog.getTag().contains(tagToFilter)));
+		});
+		button3.setOnAction(e -> {
+			String tagToFilter = button3.getText();
+			tableView.setItems(dataList.filtered(blog -> blog.getTag().contains(tagToFilter)));
+		});
+		button4.setOnAction(e -> {
+			String tagToFilter = button4.getText();
+			tableView.setItems(dataList.filtered(blog -> blog.getTag().contains(tagToFilter)));
+		});
+		button5.setOnAction(e -> {
+			String tagToFilter = button5.getText();
+			tableView.setItems(dataList.filtered(blog -> blog.getTag().contains(tagToFilter)));
+		});
+
+		// hot tag in month
+		String top3Tag = "";
+		List<String> hotTag = data.getHotTag();
+		for (String tag : hotTag) {
+			top3Tag += tag + "\n";
+		}
+		hotTagText.setText(top3Tag);
+
 	}
 
 }
