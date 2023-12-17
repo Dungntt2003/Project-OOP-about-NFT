@@ -27,12 +27,11 @@
       <TextField fx:id="searchword" layoutX="124.0" layoutY="66.0" prefHeight="25.0" prefWidth="603.0" />
       <TableView fx:id="tableView" layoutX="25.0" layoutY="110.0" prefHeight="400.0" prefWidth="707.0">
         <columns>
-          <TableColumn fx:id="dateColumn" prefWidth="129.0" text="Date" />
-          <TableColumn fx:id="titleColumn" prefWidth="116.0" text="Title" />
-            <TableColumn fx:id="authorColumn" prefWidth="109.0" text="Author" />
-            <TableColumn fx:id="tagColumn" prefWidth="117.0" text="Tag" />
-            <TableColumn fx:id="priceColumn" prefWidth="61.0" text="Price" />
-            <TableColumn fx:id="transactionColumn" prefWidth="77.0" text="Transaction" />
+          <TableColumn fx:id="collectionColumn" prefWidth="215.0" text="Collection" />
+          <TableColumn fx:id="volumn" prefWidth="96.0" text="Volumn" />
+            <TableColumn fx:id="volumnChange" prefWidth="135.0" text="Volumn change" />
+            <TableColumn fx:id="floorPrice" prefWidth="132.0" text="Floor price" />
+            <TableColumn fx:id="PriceChange" prefWidth="159.0" text="Price change" />
         </columns>
       </TableView>
       <VBox alignment="TOP_CENTER" layoutX="772.0" layoutY="111.0" prefHeight="400.0" prefWidth="201.0">
@@ -60,5 +59,6 @@
          </children>
       </VBox>
       <VBox layoutX="750.0" layoutY="69.0" prefHeight="441.0" prefWidth="4.0" style="-fx-background-color: #ccc;" />
+      <Text layoutX="802.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* Data within 24 hours" />
    </children>
 </AnchorPane>

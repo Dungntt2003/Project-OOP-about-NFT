@@ -149,16 +149,18 @@ public class RelationController implements Initializable {
 				new Blog("Art", "Holland", "11/11/2023", tagStrings, 100),
 				new Blog("Art", "Tom", "12/11/2023", tagStrings, 100),
 				new Blog("Animate", "Tom", "13/11/2023", tagStrings, 100));
-		tableTweets.setItems(tweetList);
-		tableBlogs.setItems(blogList);
+//		tableTweets.setItems(tweetList);
+//		tableBlogs.setItems(blogList);
 
 		FilteredList<Tweet> filteredData1 = new FilteredList<>(tweetList);
-		tableTweets.setItems(filteredData1);
+//		tableTweets.setItems(filteredData1);
 
 		FilteredList<Blog> filteredData2 = new FilteredList<>(blogList);
-		tableBlogs.setItems(filteredData2);
+//		tableBlogs.setItems(filteredData2);
 
 		tableNFTs.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+			tableTweets.setItems(filteredData1);
+			tableBlogs.setItems(filteredData2);
 			if (newSelection != null) {
 				String selectedName = newSelection.getTitle();
 				filteredData1

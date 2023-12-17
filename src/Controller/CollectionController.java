@@ -1,7 +1,6 @@
 package Controller;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import GetDataFromJson.getCollection;
@@ -19,29 +18,27 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 
 public class CollectionController implements Initializable {
-//	 @FXML
-//	    private TableColumn<Collection, Integer> transactionColumn;
-
-	@FXML
-	private TableColumn<Collection, String> titleColumn;
 
 	@FXML
 	private TextField searchword;
 
 	@FXML
-	private TableColumn<Collection, String> authorColumn;
+	private TableColumn<Collection, String> collectionColumn;
 
 	@FXML
-	private TableColumn<Collection, ArrayList<String>> tagColumn;
+	private TableColumn<Collection, String> volumn;
 
 	@FXML
-	private TableColumn<Collection, String> dateColumn;
-
-	@FXML
-	private TableColumn<Collection, Float> priceColumn;
+	private TableColumn<Collection, String> volumnChange;
 
 	@FXML
 	private TableView<Collection> tableView;
+
+	@FXML
+	private TableColumn<Collection, String> floorPrice;
+
+	@FXML
+	private TableColumn<Collection, String> PriceChange;
 
 	@FXML
 	private Text Text2;
@@ -54,15 +51,14 @@ public class CollectionController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
-		authorColumn.setCellValueFactory(new PropertyValueFactory<>("author"));
-		dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-		tagColumn.setCellValueFactory(new PropertyValueFactory<>("tag"));
-		priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
-//			transactionColumn.setCellValueFactory(new PropertyValueFactory<>("transaction"));
+		collectionColumn.setCellValueFactory(new PropertyValueFactory<>("collection"));
+		volumn.setCellValueFactory(new PropertyValueFactory<>("volumn"));
+		volumnChange.setCellValueFactory(new PropertyValueFactory<>("volumn_change"));
+		floorPrice.setCellValueFactory(new PropertyValueFactory<>("floor_price"));
+		PriceChange.setCellValueFactory(new PropertyValueFactory<>("price_change"));
 		getCollection dataCollection = new getCollection();
-		Text1.setText(dataCollection.getArrayList().get(0).getTitle());
-		Text2.setText(dataCollection.getArrayList().get(1).getTitle());
+		Text1.setText(dataCollection.getArrayList().get(0).getCollection());
+		Text2.setText(dataCollection.getArrayList().get(1).getCollection());
 		ObservableList<Collection> dataList = FXCollections.observableArrayList(dataCollection.getArrayList());
 		tableView.setItems(dataList);
 
@@ -75,13 +71,7 @@ public class CollectionController implements Initializable {
 					return false;
 				}
 				String searchKeyWord = newValue.toLowerCase();
-				if (Collection.getTitle().toLowerCase().contains(searchKeyWord))
-					return true;
-				if (Collection.getAuthor().toLowerCase().contains(searchKeyWord))
-					return true;
-				if (Collection.getDate().contains(searchKeyWord))
-					return true;
-				if (Collection.getTag().contains(searchKeyWord))
+				if (Collection.getCollection().toLowerCase().contains(searchKeyWord))
 					return true;
 				return false;
 			});

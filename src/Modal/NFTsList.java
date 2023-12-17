@@ -27,16 +27,16 @@ public class NFTsList {
 		}
 	}
 
-	public void SortByPrice() {
-		ArrayList<Collection> listCollections = new ArrayList<Collection>();
-		for (NFT a : list) {
-			listCollections.add((Collection) a);
-		}
-		Collections.sort(listCollections, Collection.COMPARATOR_BY_PRICE);
-		for (Collection collection : listCollections) {
-			System.out.println(collection.toString());
-		}
-	}
+//	public void SortByPrice() {
+//		ArrayList<Collection> listCollections = new ArrayList<Collection>();
+//		for (NFT a : list) {
+//			listCollections.add((Collection) a);
+//		}
+//		Collections.sort(listCollections, Collection.COMPARATOR_BY_PRICE);
+//		for (Collection collection : listCollections) {
+//			System.out.println(collection.toString());
+//		}
+//	}
 
 	public void SortByLike() {
 		ArrayList<Tweet> listTweets = new ArrayList<Tweet>();

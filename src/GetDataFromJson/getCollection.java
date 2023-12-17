@@ -12,7 +12,7 @@ public class getCollection {
 	JsonParser jsonParser = new JsonParser();
 
 	public ArrayList<Collection> getArrayList() {
-		String strJson = jsonParser.getJSONFromFile("D:\\java\\OOP_Nhom21\\src\\FileJson\\dataCollection.json");
+		String strJson = jsonParser.getJSONFromFile("D:\\java\\OOP_Nhom21\\src\\FileJson\\binanceTest.json");
 		try {
 			ArrayList<Collection> CollectionList = new ArrayList<Collection>();
 			JSONParser parser = new JSONParser();
@@ -21,24 +21,16 @@ public class getCollection {
 			for (int i = 0; i < mainJsonObject.size(); i++) {
 				Collection Collection = new Collection();
 				JSONObject jsonObject = (JSONObject) mainJsonObject.get(i);
-				String Title = (String) jsonObject.get("title");
-				Collection.setTitle(Title);
-				String autString = (String) jsonObject.get("author");
-				Collection.setAuthor(autString);
-				String dateString = (String) jsonObject.get("date");
-				Collection.setDate(dateString);
-				JSONArray jsonArrayTag = (JSONArray) jsonObject.get("tags");
-				ArrayList<String> tagList = new ArrayList<String>();
-				for (int j = 0; j < jsonArrayTag.size(); j++) {
-					String string = (String) jsonArrayTag.get(j);
-					tagList.add(string);
-				}
-				Collection.setTag(tagList);
-				double price = (Double) jsonObject.get("price");
-				long transaction = (Long) jsonObject.get("transaction");
-				Collection.setPrice(Math.floor(price));
-				Collection.setTransaction(transaction);
-				System.out.println(transaction);
+				String collection = (String) jsonObject.get("collection");
+				Collection.setCollection(collection);
+				String volumn = (String) jsonObject.get("volume");
+				Collection.setVolumn(volumn);
+				String volumn_change = (String) jsonObject.get("volume change");
+				Collection.setVolumn_change(volumn_change);
+				String floor_price = (String) jsonObject.get("floor price");
+				String price_change = (String) jsonObject.get("price change");
+				Collection.setFloor_price(floor_price);
+				Collection.setPrice_change(price_change);
 				CollectionList.add(Collection);
 			}
 			return CollectionList;
