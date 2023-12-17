@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -14,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="layout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="814.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interface.HomepageController">
+<BorderPane fx:id="layout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="814.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interface.HomepageController">
     <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
@@ -26,7 +21,7 @@
                      <children>
                         <Label alignment="CENTER" prefHeight="37.0" prefWidth="125.0" text="Homepage" textFill="#000000c7">
                            <font>
-                              <Font name="System Bold" size="12.0" />
+                              <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
                      </children>
@@ -35,30 +30,19 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #fff;">
                <children>
-                  <VBox alignment="CENTER" prefHeight="100.0" prefWidth="258.0">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="59.0" prefWidth="236.0" text="Welcome &#10;Group 21&#10;&#10;" textAlignment="CENTER">
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefHeight="48.0" prefWidth="173.0" text="OOP Project: NFTs' Data Collector">
-                           <font>
-                              <Font size="11.0" />
-                           </font></Label>
-                     </children>
-                  </VBox>
+                  <TextArea accessibleRole="DIALOG" nodeOrientation="LEFT_TO_RIGHT" prefHeight="65.0" prefWidth="566.0" text="&#10;&#9;Non-fungible tokens (NFTs) are a type of digital asset that represents real-world items such as art, music, in-game items, and videos. NFTs are bought and sold online, typically with cryptocurrency. NFTs are usually encoded with the same underlying software as many cryptocurrencies." wrapText="true" />
+                  <VBox alignment="CENTER" prefHeight="100.0" prefWidth="157.0" />
                   <ImageView fx:id="iconView" fitHeight="90.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </HBox>
-            <VBox prefHeight="134.0" prefWidth="471.0">
+            <VBox prefHeight="188.0" prefWidth="814.0">
                <children>
                   <Label alignment="CENTER" prefHeight="19.0" prefWidth="90.0" text="Articles">
                      <font>
                         <Font name="System Bold" size="11.0" />
                      </font>
                   </Label>
-                  <HBox alignment="CENTER" prefHeight="131.0" prefWidth="471.0" spacing="10.0">
+                  <HBox alignment="CENTER" prefHeight="148.0" prefWidth="814.0" spacing="10.0">
                      <children>
                         <VBox alignment="CENTER" prefHeight="118.0" prefWidth="95.0" style="-fx-background-color: #fff;">
                            <children>
@@ -104,7 +88,7 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <VBox alignment="BOTTOM_LEFT" prefHeight="159.0" prefWidth="814.0">
                <children>
                   <Label alignment="CENTER" prefHeight="19.0" prefWidth="90.0" text="Markets">
                      <font>
