@@ -86,38 +86,4 @@ public class HomepageController implements Initializable {
 		raribleView.setImage(rarible);
 	}
 
-//    @FXML
-//    void homepage(ActionEvent event) {
-//        loadPage("homepage");
-//    }
-//
-//    @FXML
-//    void tweets(ActionEvent event) {
-//        loadPage("tweets");
-//    }
-//
-//    @FXML
-//    void blogs(ActionEvent event) {
-//        loadPage("blogs");
-//    }
-//
-//    @FXML
-//    void collections(ActionEvent event) {
-//        loadPage("collections");
-//    }
-//
-//    @FXML
-//    void relation(ActionEvent event) {
-//        loadPage("relation");
-//    }
-//
-//    void loadPage(String Page) {
-//        Parent rootParent = null;
-//        try {
-//            rootParent = FXMLLoader.load(getClass().getResource(Page + ".fxml"));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        layout.setCenter(rootParent);
-//    }
 }

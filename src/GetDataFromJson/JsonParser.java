@@ -48,42 +48,5 @@ public class JsonParser {
 
 		return jsonText;
 	}
-//    public static void main(String[] args) {
-//		
-//	}
-//    public static ArrayList<Blog> getArrayList() {
-//    	String strJson = getJSONFromFile("D:\\java\\Test_for_oop_pj\\src\\Data\\data.json");
-//      
-//      System.out.println(strJson);
-//      try {
-//      	ArrayList<Blog> blogList = new ArrayList<Blog>();
-//          JSONParser parser = new JSONParser();
-//          Object object = parser.parse(strJson);
-//          JSONArray mainJsonObject = (JSONArray) object;
-//          for (int i = 0 ; i < mainJsonObject.size(); i++) {
-//          	Blog blog = new Blog();
-//          	JSONObject jsonObject = (JSONObject)mainJsonObject.get(i);
-//          	String Title = (String) jsonObject.get("title");
-//          	blog.setTitle(Title);
-//          	String autString = (String) jsonObject.get("author");
-//            	blog.setAuthor(autString);
-//            	String dateString = (String)jsonObject.get("date");
-//            	blog.setDate(dateString);        
-//            	JSONArray jsonArrayTag = (JSONArray) jsonObject.get("tags");
-//            	ArrayList<String> tagList = new ArrayList<String>();
-//            	for (int j = 0 ; j < jsonArrayTag.size() ; j++) {
-//	              	String string = (String)jsonArrayTag.get(j);
-//	              	tagList.add(string);
-//            	}
-//            	blog.setTag(tagList);
-//            	blog.setView(100);
-//          	blogList.add(blog);
-//          }
-//          return blogList;
-//      }
-//      catch(Exception ex) {
-//          ex.printStackTrace();
-//      }
-//      return null;
-//	}
+
 }

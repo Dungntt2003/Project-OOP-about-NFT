@@ -13,8 +13,6 @@ public class getTweet {
 
 	public ArrayList<Tweet> getArrayList() {
 		String strJson = jsonParser.getJSONFromFile("D:\\java\\OOP_Nhom21\\src\\FileJson\\dataTweet.json");
-
-//	      System.out.println(strJson);
 		try {
 			ArrayList<Tweet> tweetList = new ArrayList<Tweet>();
 			JSONParser parser = new JSONParser();

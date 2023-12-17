@@ -12,8 +12,6 @@ public class getBlog {
 	JsonParser jsonParser = new JsonParser();
 
 	public ArrayList<Blog> getArrayList() {
-
-//	      System.out.println(strJson);
 		try {
 			String strJson = jsonParser.getJSONFromFile("D:\\java\\OOP_Nhom21\\src\\FileJson\\dataBlog.json");
 			ArrayList<Blog> blogList = new ArrayList<Blog>();

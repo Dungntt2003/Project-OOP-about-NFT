@@ -13,8 +13,6 @@ public class getCollection {
 
 	public ArrayList<Collection> getArrayList() {
 		String strJson = jsonParser.getJSONFromFile("D:\\java\\OOP_Nhom21\\src\\FileJson\\dataCollection.json");
-
-//	      System.out.println(strJson);
 		try {
 			ArrayList<Collection> CollectionList = new ArrayList<Collection>();
 			JSONParser parser = new JSONParser();
