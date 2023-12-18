@@ -26,7 +26,7 @@ public class Cointelegraph {
             "https://cointelegraph.com/tags/nft"
         };
 
-        int numPages = 1; // Số trang cần lấy
+        int numPages = 5; // Số trang cần lấy
         int delayInSeconds = 10; // Khoảng thời gian chờ giữa các trang (10 giây)
 
         JSONArray jsonArray = new JSONArray();
@@ -54,11 +54,18 @@ public class Cointelegraph {
                             Element meta = header.select("div.post-card-inline__meta").first();
                             Element authorElement = meta.select("p.post-card-inline__author").first();
                             Element dateElement = meta.select("time.post-card-inline__date").first();
+                            
 
                             // Xử lý tiêu đề (title) để loại bỏ kí tự không mong muốn
                             Element titleElement = article.select("span.post-card-inline__title").first();
                             String titleText = titleElement.text().replaceAll("[\u2018\u2019]", "'").replace("\u2014", "-");
                             entry.put("title", titleText);
+                            
+                            // Lấy href
+                            Element linkElement = article.select("a.post-card-inline__title-link").first();
+                            String href = linkElement.attr("href"); // Get the href attribute
+                            entry.put("href", "https://cointelegraph.com" + href); // Add the base URL to create the full URL
+
 
                             // Xử lý tên tác giả bỏ "by "
                             String authorText = authorElement.text().replace("by ", "");
@@ -68,6 +75,8 @@ public class Cointelegraph {
                             Element stats = article.select("div.post-card-inline__stats").first();
                             Element viewsElement = stats.select("span.post-card-inline__stats-item span").last();
                             entry.put("views", viewsElement.text().trim());
+                            
+      
 
                             // Lấy thẻ (tag)
                             String[] urlParts = url.split("/");
