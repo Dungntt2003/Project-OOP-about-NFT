@@ -1,42 +1,56 @@
 package Modal;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 
 public class Tweet extends NFT {
-	private long like;
-	private int share;
-	private int comment;
-	public static final Comparator<Tweet> COMPARATOR_BY_LIKE = new ComparatorByLike();
+	private String replies;
+	private String reposts;
+	private String likes;
+	private String views;
 
 	public Tweet() {
 
 	}
 
-	public Tweet(String title, String author, String date, ArrayList<String> tag, long like, int share, int comment) {
-		super(title, author, date, tag);
-		this.like = like;
-		this.share = share;
-		this.comment = comment;
+	public Tweet(String author, String date, ArrayList<String> tag, String replies, String reposts, String likes,
+			String views) {
+		super(author, date, tag);
+		this.replies = replies;
+		this.reposts = reposts;
+		this.likes = likes;
+		this.views = views;
 	}
 
-	public long getLike() {
-		return like;
+	public String getReplies() {
+		return replies;
 	}
 
-	public void setLike(long like) {
-		this.like = like;
+	public String getReposts() {
+		return reposts;
 	}
 
-	public void setShare(int share) {
-		this.share = share;
+	public String getLikes() {
+		return likes;
 	}
 
-	public void setComment(int comment) {
-		this.comment = comment;
+	public String getViews() {
+		return views;
 	}
 
-	public String toString() {
-		return super.toString() + " - " + this.like + " - " + this.share + " - " + this.comment;
+	public void setReplies(String replies) {
+		this.replies = replies;
 	}
+
+	public void setReposts(String reposts) {
+		this.reposts = reposts;
+	}
+
+	public void setLikes(String likes) {
+		this.likes = likes;
+	}
+
+	public void setViews(String views) {
+		this.views = views;
+	}
+
 }

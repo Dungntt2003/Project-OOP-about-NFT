@@ -12,7 +12,7 @@ public class getTweet {
 	JsonParser jsonParser = new JsonParser();
 
 	public ArrayList<Tweet> getArrayList() {
-		String strJson = jsonParser.getJSONFromFile("D:\\java\\OOP_Nhom21\\src\\FileJson\\dataTweet.json");
+		String strJson = jsonParser.getJSONFromFile("D:\\java\\OOP_Nhom21\\src\\FileJson\\twitter.json");
 		try {
 			ArrayList<Tweet> tweetList = new ArrayList<Tweet>();
 			JSONParser parser = new JSONParser();
@@ -21,21 +21,22 @@ public class getTweet {
 			for (int i = 0; i < mainJsonObject.size(); i++) {
 				Tweet tweet = new Tweet();
 				JSONObject jsonObject = (JSONObject) mainJsonObject.get(i);
-				String Title = (String) jsonObject.get("title");
-				tweet.setTitle(Title);
 				String autString = (String) jsonObject.get("author");
 				tweet.setAuthor(autString);
 				String dateString = (String) jsonObject.get("date");
 				tweet.setDate(dateString);
-				JSONArray jsonArrayTag = (JSONArray) jsonObject.get("tags");
-				ArrayList<String> tagList = new ArrayList<String>();
-				for (int j = 0; j < jsonArrayTag.size(); j++) {
-					String string = (String) jsonArrayTag.get(j);
-					tagList.add(string);
-				}
-				tweet.setTag(tagList);
-				long like = (Long) jsonObject.get("like");
-				tweet.setLike(like);
+				String replieString = (String) jsonObject.get("replies");
+				tweet.setReplies(replieString);
+				String repostString = (String) jsonObject.get("reposts");
+				tweet.setReposts(repostString);
+				String likeString = (String) jsonObject.get("likes");
+				tweet.setLikes(likeString);
+				String viewString = (String) jsonObject.get("views");
+				tweet.setViews(viewString);
+				String hashtahString = (String) jsonObject.get("hashtags");
+				ArrayList<String> hashtagList = new ArrayList<String>();
+				hashtagList.add(hashtahString);
+				tweet.setTag(hashtagList);
 				tweetList.add(tweet);
 			}
 			return tweetList;

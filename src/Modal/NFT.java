@@ -3,7 +3,6 @@ package Modal;
 import java.util.ArrayList;
 
 public class NFT {
-	private String title;
 	private String author;
 	private String date;
 	private ArrayList<String> tag = new ArrayList<String>();
@@ -12,15 +11,10 @@ public class NFT {
 
 	}
 
-	public NFT(String title, String author, String date, ArrayList<String> tag) {
-		this.title = title;
+	public NFT(String author, String date, ArrayList<String> tag) {
 		this.author = author;
 		this.date = date;
 		this.tag = tag;
-	}
-
-	public String getTitle() {
-		return title;
 	}
 
 	public String getAuthor() {
@@ -29,10 +23,6 @@ public class NFT {
 
 	public String getDate() {
 		return date;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
 	}
 
 	public void setAuthor(String author) {
@@ -60,6 +50,6 @@ public class NFT {
 	}
 
 	public String toString() {
-		return this.title + " - " + this.author + " - " + this.date + "- " + printTag();
+		return this.author + " - " + this.date + "- " + printTag();
 	}
 }

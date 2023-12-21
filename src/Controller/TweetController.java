@@ -26,9 +26,6 @@ public class TweetController implements Initializable {
 	private TextField searchText;
 
 	@FXML
-	private TableColumn<Tweet, String> titleColumn;
-
-	@FXML
 	private Text text2;
 
 	@FXML
@@ -38,34 +35,44 @@ public class TweetController implements Initializable {
 	private Text heading;
 
 	@FXML
-	private TableColumn<Tweet, String> authorColumn;
-
-	@FXML
 	private TableView<Tweet> tableView;
 
 	@FXML
-	private TableColumn<Tweet, ArrayList<String>> tagColumn;
+	private TableColumn<Tweet, String> likeColumn;
 
 	@FXML
-	private TableColumn<Tweet, Integer> likeColumn;
+	private TableColumn<Tweet, String> replyColumn;
+
+	@FXML
+	private TableColumn<Tweet, String> repostColumn;
+
+	@FXML
+	private TableColumn<Tweet, String> authorColumn;
 
 	@FXML
 	private TableColumn<Tweet, String> dateColumn;
+
+	@FXML
+	private TableColumn<Tweet, ArrayList<String>> hashtagColumn;
+
+	@FXML
+	private TableColumn<Tweet, String> viewColumn;
+
 	ObservableList<Tweet> tweets = FXCollections.observableArrayList();
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
-		authorColumn.setCellValueFactory(new PropertyValueFactory<>("author"));
 		dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-		tagColumn.setCellValueFactory(new PropertyValueFactory<>("tag"));
-		likeColumn.setCellValueFactory(new PropertyValueFactory<>("like"));
-//			shareColumn.setCellValueFactory(new PropertyValueFactory<>("share"));
-//			commentColumn.setCellValueFactory(new PropertyValueFactory<>("comment"));
+		authorColumn.setCellValueFactory(new PropertyValueFactory<>("author"));
+		replyColumn.setCellValueFactory(new PropertyValueFactory<>("replies"));
+		repostColumn.setCellValueFactory(new PropertyValueFactory<>("reposts"));
+		likeColumn.setCellValueFactory(new PropertyValueFactory<>("likes"));
+		viewColumn.setCellValueFactory(new PropertyValueFactory<>("views"));
+		hashtagColumn.setCellValueFactory(new PropertyValueFactory<>("tag"));
 		getTweet dataTweet = new getTweet();
-		text1.setText(dataTweet.getArrayList().get(0).getTitle());
-		text2.setText(dataTweet.getArrayList().get(1).getTitle());
+		text1.setText(dataTweet.getArrayList().get(0).getAuthor());
+		text2.setText(dataTweet.getArrayList().get(1).getAuthor());
 		ObservableList<Tweet> dataList = FXCollections.observableArrayList(dataTweet.getArrayList());
 		tableView.setItems(dataList);
 
@@ -74,12 +81,7 @@ public class TweetController implements Initializable {
 
 		searchText.textProperty().addListener((observable, oldValue, newValue) -> {
 			filteredList.setPredicate(Tweet -> {
-				if (newValue.isEmpty() || newValue == null) {
-					return false;
-				}
 				String searchKeyWord = newValue.toLowerCase();
-				if (Tweet.getTitle().toLowerCase().contains(searchKeyWord))
-					return true;
 				if (Tweet.getAuthor().toLowerCase().contains(searchKeyWord))
 					return true;
 				if (Tweet.getDate().contains(searchKeyWord))

@@ -67,9 +67,6 @@ public class CollectionController implements Initializable {
 
 		searchword.textProperty().addListener((observable, oldValue, newValue) -> {
 			filteredList.setPredicate(Collection -> {
-				if (newValue.isEmpty() || newValue == null) {
-					return false;
-				}
 				String searchKeyWord = newValue.toLowerCase();
 				if (Collection.getCollection().toLowerCase().contains(searchKeyWord))
 					return true;

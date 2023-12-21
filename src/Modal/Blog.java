@@ -1,19 +1,27 @@
 package Modal;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 
 public class Blog extends NFT {
+	private String title;
 	private long view;
-	public static final Comparator<Blog> COMPARATOR_BY_VIEW = new ComparatorByView();
 
 	public Blog() {
 
 	}
 
 	public Blog(String title, String author, String date, ArrayList<String> tag, long view) {
-		super(title, author, date, tag);
+		super(author, date, tag);
 		this.view = view;
+		this.title = title;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public long getView() {

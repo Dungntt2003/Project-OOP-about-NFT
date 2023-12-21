@@ -89,9 +89,6 @@ public class BlogController implements Initializable {
 
 		searchWord.textProperty().addListener((observable, oldValue, newValue) -> {
 			filteredList.setPredicate(Blog -> {
-				if (newValue.isEmpty() || newValue == null) {
-					return false;
-				}
 				String searchKeyWord = newValue.toLowerCase();
 				if (Blog.getTitle().toLowerCase().contains(searchKeyWord))
 					return true;

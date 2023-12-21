@@ -51,7 +51,7 @@
             <Text strokeType="OUTSIDE" strokeWidth="0.0" />
             <Text fill="#111eab" strokeType="OUTSIDE" strokeWidth="0.0" text="NFTs' Data Collector" textAlignment="CENTER">
                <font>
-                  <Font name="System Italic" size="22.0" />
+                  <Font size="22.0" />
                </font></Text>
          </children>
       </HBox>

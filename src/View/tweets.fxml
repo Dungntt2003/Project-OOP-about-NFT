@@ -21,11 +21,13 @@
       </Text>
       <TableView fx:id="tableView" layoutX="17.0" layoutY="110.0" prefHeight="400.0" prefWidth="713.0">
         <columns>
-          <TableColumn fx:id="dateColumn" prefWidth="111.0" text="Date" />
-          <TableColumn fx:id="titleColumn" prefWidth="205.0" text="Title" />
-            <TableColumn fx:id="authorColumn" minWidth="0.0" prefWidth="157.0" text="Author" />
-            <TableColumn fx:id="tagColumn" prefWidth="146.0" text="Tags" />
-            <TableColumn fx:id="likeColumn" minWidth="8.0" prefWidth="92.0" text="Like" />
+          <TableColumn fx:id="dateColumn" prefWidth="110.0" text="Date" />
+          <TableColumn fx:id="authorColumn" prefWidth="161.0" text="Author" />
+            <TableColumn fx:id="hashtagColumn" minWidth="0.0" prefWidth="155.0" text="Hashtag" />
+            <TableColumn fx:id="replyColumn" prefWidth="71.0" text="Replies" />
+            <TableColumn fx:id="repostColumn" minWidth="8.0" prefWidth="73.0" text="Reposts" />
+            <TableColumn fx:id="likeColumn" minWidth="8.0" prefWidth="72.0" text="Likes" />
+            <TableColumn fx:id="viewColumn" minWidth="8.0" prefWidth="70.0" text="Views" />
         </columns>
       </TableView>
       <TextField fx:id="searchText" layoutX="110.0" layoutY="69.0" prefHeight="25.0" prefWidth="614.0" promptText="Keyword : hashtag, title, author, date, .." />
