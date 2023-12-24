@@ -20,10 +20,12 @@ import java.util.Locale;
 public class DecryptCrawl {
 
     public static WebDriver driver;
-    public static int loadMore = 15;
+    public static int loadMore = 50;
+    
+    
 
     public static void main(String[] args) {
-    	System.setProperty("webdriver.chrome.driver", "C:\\Users\\Admin\\Downloads\\chromedriver-win64\\chromedriver.exe");
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
 
         driver.get("https://decrypt.co/news");
@@ -50,6 +52,7 @@ public class DecryptCrawl {
 
 
         try (FileWriter file = new FileWriter("decrypt.json")) {
+        	file.write("[\n");
             for (int i = 0; i < titles.size(); i++) {
                 String title = titles.get(i).getText();
                 String authorText = authors.get(i).getText().replace("by ", "");
@@ -65,22 +68,24 @@ public class DecryptCrawl {
                 articleJson.put("author", authorText);
                 articleJson.put("date", formattedDate);
                 articleJson.put("tags", tag);
-                articleJson.put("view", null);                             
+                articleJson.put("view", "null");                             
 
                 // Write the formatted JSON object to the file with a line break
-                file.write("{\n");
-                file.write("	\"title\":\"" + title + "\",\n");
-                file.write("	\"author\":\"" + authorText + "\",\n"); 
-                file.write("	\"date\":\"" + formattedDate + "\",\n");
-                file.write("	\"tags\":\"" + tag + "\",\n");
-                file.write("	\"view\":null\n");                              
-                file.write("}");
-                if (i < titles.size() - 1) {
+                file.write("	{\n");
+                file.write("		\"title\":\"" + title + "\",\n");
+                file.write("		\"author\":\"" + authorText + "\",\n");
+                file.write("		\"href\":\"" + "\",\n");
+                file.write("		\"date\":\"" + formattedDate + "\",\n");
+                file.write("		\"tags\":\"" + tag + "\",\n");
+                file.write("		\"views\":\"null\"\n");                              
+                file.write("	}");
+                if (i < authors.size() - 1) {
                     file.write(",\n");
                 } else {
                     file.write("\n");
                 }
             }
+            file.write("\n]\n");
             System.out.println("JSON objects written to decrypt.json");
         } catch (IOException e) {
             e.printStackTrace();
@@ -93,8 +98,8 @@ public class DecryptCrawl {
     
     private static String convertDateFormat(String originalDate) {
         try {
-            Date date = new SimpleDateFormat("MMM dd, yyyy", Locale.ENGLISH).parse(originalDate);
-            LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            Date date = new SimpleDateFormat("MMM dd, yyyy").parse(originalDate);
+            LocalDate localDate = date.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             return localDate.format(formatter);
         } catch (ParseException e) {
@@ -102,8 +107,5 @@ public class DecryptCrawl {
             return originalDate; // Return the original date if conversion fails
         }
     }
-
-
-
     
 }

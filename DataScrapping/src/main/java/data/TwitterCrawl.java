@@ -27,7 +27,7 @@ import java.util.Date;
 
 public class TwitterCrawl {
 
-	public static WebDriver driver;
+    public static WebDriver driver;
     static JavascriptExecutor js;
     static int loadMore = 50;
     static Long lastHeight = 0L;
@@ -39,7 +39,7 @@ public class TwitterCrawl {
     static List<String> reposts = new ArrayList<>();
     static List<String> likes = new ArrayList<>();
     static List<String> views = new ArrayList<>();
-    
+    static List<String> contents = new ArrayList<>();    
     static int i = 0;
     
     private static String convertTimeAgoToDate(String timeAgo) {
@@ -72,12 +72,16 @@ public class TwitterCrawl {
 
     public static void main(String[] args) {
         WebDriverManager.chromedriver().setup();
-
-    	System.setProperty("webdriver.chrome.driver", "C:\\Users\\Admin\\Downloads\\chromedriver-win64\\chromedriver.exe");
-    	WebDriver driver = new ChromeDriver();
-    	js = (JavascriptExecutor) driver;
+        driver = new ChromeDriver();
+        js = (JavascriptExecutor) driver;
 
         driver.get("https://twitter.com");
+        
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         driver.findElement(By.cssSelector("a[href='/login']")).click();
 
@@ -85,7 +89,7 @@ public class TwitterCrawl {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
-}
+        }
 
         driver.findElement(By.name("text")).sendKeys("oopnhom21");
         driver.findElement(By.name("text")).sendKeys(Keys.ENTER);
@@ -100,7 +104,7 @@ public class TwitterCrawl {
         driver.findElement(By.name("password")).sendKeys(Keys.ENTER);
 
         try {
-            Thread.sleep(5000);
+            Thread.sleep(7000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -182,6 +186,13 @@ public class TwitterCrawl {
             }
             tags.add(tagBuilder.toString().trim());
             
+            StringBuilder contentBuilder = new StringBuilder();
+            for (String line : lines) {
+                contentBuilder.append(line).append(" ");
+            }
+            String content = contentBuilder.toString().trim();
+            contents.add(content);
+            
             
         }
 //        System.out.println("Authors: " + authors);
@@ -194,6 +205,7 @@ public class TwitterCrawl {
 //        System.out.println("------------------------------");
         
         try (FileWriter file = new FileWriter("twitter.json")) {
+        	file.write("[\n");
             for (int r = 0; r < authors.size(); r++) {
                 String author = authors.get(r);
                 String timeAgo = timeAgos.get(r);
@@ -202,23 +214,26 @@ public class TwitterCrawl {
                 String like = likes.get(r);
                 String view = views.get(r);
                 String tag = tags.get(r);
+                String content = contents.get(r);
 
                 // Write the formatted JSON object to the file with a line break
-                file.write("{\n");
-                file.write("	\"author\":\"" + author + "\",\n");
-                file.write("	\"date\":\"" + timeAgo + "\",\n");
-                file.write("	\"replies\":\"" + reply + "\",\n");
-                file.write("	\"reposts\":\"" + repost + "\",\n");
-                file.write("	\"likes\":\"" + like + "\",\n");
-                file.write("	\"views\":\"" + view + "\",\n");
-                file.write("	\"hashtags\":\"" + tag + "\"\n");
-                file.write("}");
+                file.write("	{\n");
+                file.write("		\"author\":\"" + author + "\",\n");
+                file.write("		\"date\":\"" + timeAgo + "\",\n");
+                file.write("		\"replies\":\"" + reply + "\",\n");
+                file.write("		\"reposts\":\"" + repost + "\",\n");
+                file.write("		\"likes\":\"" + like + "\",\n");
+                file.write("		\"views\":\"" + view + "\",\n");
+                file.write("		\"hashtags\":\"" + tag + "\",\n");
+                file.write("		\"content\":\"" + content + "\"\n");
+                file.write("	}");
                 if (i < authors.size() - 1) {
                     file.write(",\n");
                 } else {
                     file.write("\n");
                 }
             }
+            file.write("\n]\n");
             System.out.println("JSON objects written to twitter.json");
         } catch (IOException e) {
             e.printStackTrace();
