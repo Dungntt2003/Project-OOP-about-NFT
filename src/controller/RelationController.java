@@ -153,9 +153,17 @@ public class RelationController implements Initializable {
 			if (newSelection != null) {
 				String selectedName = newSelection.getCollection();
 				filteredData1.setPredicate(tweet -> tweet.getTag().contains(selectedName));
-				filteredData2.setPredicate(blog -> blog.getTitle().toLowerCase().contains(selectedName.toLowerCase()));
+				filteredData2.setPredicate(blog -> checkContains(blog, selectedName));
 			}
 		});
 
+	}
+
+	// Check collection in and blog
+	boolean checkContains(Blog blog, String s) {
+		String[] words = s.split(" ");
+		for (String a : words)
+			return blog.getTitle().toLowerCase().contains(a.toLowerCase());
+		return false;
 	}
 }
