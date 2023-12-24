@@ -20,7 +20,7 @@ public class OpenSeaCrawl {
     private static String openseacsvpath = "opensea.csv";
 
     private static void opensea() {
-        WebDriverManager.chromedriver().setup();
+    	System.setProperty("webdriver.chrome.driver", "C:\\Users\\Admin\\Downloads\\chromedriver-win64\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.get("https://opensea.io/rankings/trending?sortBy=one_day_volume");
         JavascriptExecutor js = (JavascriptExecutor) driver;

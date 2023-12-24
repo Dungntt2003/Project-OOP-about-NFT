@@ -20,7 +20,7 @@ public class NiftyGatewayCrawl {
 
     public static void main(String[] args) {
 
-        WebDriverManager.chromedriver().setup();
+    	System.setProperty("webdriver.chrome.driver", "C:\\Users\\Admin\\Downloads\\chromedriver-win64\\chromedriver.exe");
         driver = new ChromeDriver();
         int loadMore = 12;
         int i = 0;

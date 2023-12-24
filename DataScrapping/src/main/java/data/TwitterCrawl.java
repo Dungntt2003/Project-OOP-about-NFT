@@ -73,8 +73,9 @@ public class TwitterCrawl {
     public static void main(String[] args) {
         WebDriverManager.chromedriver().setup();
 
-         WebDriver driver = new ChromeDriver();
-         js = (JavascriptExecutor) driver;
+    	System.setProperty("webdriver.chrome.driver", "C:\\Users\\Admin\\Downloads\\chromedriver-win64\\chromedriver.exe");
+    	WebDriver driver = new ChromeDriver();
+    	js = (JavascriptExecutor) driver;
 
         driver.get("https://twitter.com");
 

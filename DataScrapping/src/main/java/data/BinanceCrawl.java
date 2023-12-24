@@ -12,7 +12,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class BinanceCrawl {
     private static String binancecsvpath = "binance.csv";
     private static void binance(){
-        WebDriverManager.chromedriver().setup();
+    	System.setProperty("webdriver.chrome.driver", "C:\\Users\\Admin\\Downloads\\chromedriver-win64\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.binance.com/vi/nft/ranking?tab=trend&chain=ALL");
         List<WebElement> elements = driver.findElements(By.cssSelector("#__APP > div > div.css-1pdrb2t > main > div > div > div > div.css-vurnku > div > div.css-m3366f > div"));

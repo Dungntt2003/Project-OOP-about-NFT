@@ -23,7 +23,7 @@ public class DecryptCrawl {
     public static int loadMore = 15;
 
     public static void main(String[] args) {
-        WebDriverManager.chromedriver().setup();
+    	System.setProperty("webdriver.chrome.driver", "C:\\Users\\Admin\\Downloads\\chromedriver-win64\\chromedriver.exe");
         driver = new ChromeDriver();
 
         driver.get("https://decrypt.co/news");

@@ -17,7 +17,7 @@ public class RaribleCrawl {
 	public static int loadMore = 3;
 	
 	public static void main(String[] args) {
-		WebDriverManager.chromedriver().setup();
+    	System.setProperty("webdriver.chrome.driver", "C:\\Users\\Admin\\Downloads\\chromedriver-win64\\chromedriver.exe");
         driver = new ChromeDriver();
         
         driver.get("https://rarible.com/explore/ethereum/collections?period=WEEK");
