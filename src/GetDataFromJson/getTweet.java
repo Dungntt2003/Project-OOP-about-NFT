@@ -37,6 +37,8 @@ public class getTweet {
 				ArrayList<String> hashtagList = new ArrayList<String>();
 				hashtagList.add(hashtahString);
 				tweet.setTag(hashtagList);
+				String text = (String) jsonObject.get("text");
+				tweet.setText(text);
 				tweetList.add(tweet);
 			}
 			return tweetList;

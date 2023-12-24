@@ -1,5 +1,9 @@
 package Controller;
 
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +22,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 public class BlogController implements Initializable {
@@ -104,6 +109,24 @@ public class BlogController implements Initializable {
 		SortedList<Blog> sortedList = new SortedList<Blog>(filteredList);
 		sortedList.comparatorProperty().bind(tableView.comparatorProperty());
 		tableView.setItems(sortedList);
+
+		// Open blog when click link
+		tableView.setOnMouseClicked((MouseEvent event) -> {
+			if (event.getClickCount() == 1) {
+				Blog selectedItem = tableView.getSelectionModel().getSelectedItem();
+				if (selectedItem != null) {
+					try {
+						Desktop.getDesktop().browse(new URI(selectedItem.getHref()));
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (URISyntaxException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		});
 
 		/// tag button
 		ArrayList<String> tagList = data.getListTag();

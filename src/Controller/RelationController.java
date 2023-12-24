@@ -4,7 +4,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import GetDataFromJson.getBlog;
+import GetDataFromJson.getBlog1;
 import GetDataFromJson.getCollection;
 import GetDataFromJson.getTweet;
 import Modal.Blog;
@@ -119,7 +119,7 @@ public class RelationController implements Initializable {
 		authorColumn2.setCellValueFactory(new PropertyValueFactory<Blog, String>("author"));
 		dateColumn2.setCellValueFactory(new PropertyValueFactory<Blog, String>("date"));
 		tagColumn2.setCellValueFactory(new PropertyValueFactory<>("tag"));
-		getBlog dataBlog = new getBlog();
+		getBlog1 dataBlog = new getBlog1();
 		ObservableList<Blog> blogList = FXCollections.observableArrayList(dataBlog.getArrayList());
 
 		FilteredList<Tweet> filteredData1 = new FilteredList<>(tweetList);

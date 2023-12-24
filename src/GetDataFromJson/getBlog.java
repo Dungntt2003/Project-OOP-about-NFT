@@ -31,6 +31,8 @@ public class getBlog {
 				blog.setTitle(Title);
 				String autString = (String) jsonObject.get("author");
 				blog.setAuthor(autString);
+				String hrefString = (String) jsonObject.get("href");
+				blog.setHref(hrefString);
 				String dateString = (String) jsonObject.get("date");
 				blog.setDate(dateString);
 				String tagString = (String) jsonObject.get("tags");
