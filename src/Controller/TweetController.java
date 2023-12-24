@@ -16,17 +16,16 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 public class TweetController implements Initializable {
 	@FXML
 	private AnchorPane Anchorlayout;
-	@FXML
-	private TextField searchText;
 
 	@FXML
-	private Text text2;
+	private TextField searchText;
 
 	@FXML
 	private Text text1;
@@ -71,8 +70,6 @@ public class TweetController implements Initializable {
 		viewColumn.setCellValueFactory(new PropertyValueFactory<>("views"));
 		hashtagColumn.setCellValueFactory(new PropertyValueFactory<>("tag"));
 		getTweet dataTweet = new getTweet();
-		text1.setText(dataTweet.getArrayList().get(0).getAuthor());
-		text2.setText(dataTweet.getArrayList().get(1).getAuthor());
 		ObservableList<Tweet> dataList = FXCollections.observableArrayList(dataTweet.getArrayList());
 		tableView.setItems(dataList);
 
@@ -94,6 +91,16 @@ public class TweetController implements Initializable {
 		SortedList<Tweet> sortedList = new SortedList<Tweet>(filteredList);
 		sortedList.comparatorProperty().bind(tableView.comparatorProperty());
 		tableView.setItems(sortedList);
+
+		// Display text when click in the table view
+		tableView.setOnMouseClicked((MouseEvent event) -> {
+			if (event.getClickCount() == 1) {
+				Tweet selectedItem = tableView.getSelectionModel().getSelectedItem();
+				if (selectedItem != null) {
+					text1.setText(selectedItem.getText());
+				}
+			}
+		});
 	}
 
 }

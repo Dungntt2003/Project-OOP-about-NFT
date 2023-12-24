@@ -38,17 +38,7 @@
                   <Image url="@../img/NFT-Tweet-Tiles.jpg" />
                </image>
             </ImageView>
-            <Text fx:id="text1" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="170.13671875">
-               <VBox.margin>
-                  <Insets bottom="20.0" top="10.0" />
-               </VBox.margin>
-            </Text>
-            <ImageView fitHeight="145.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/images.jpg" />
-               </image>
-            </ImageView>
-            <Text fx:id="text2" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="206.13671875">
+            <Text fx:id="text1" strokeType="OUTSIDE" strokeWidth="0.0" text="Content of tweet" textAlignment="CENTER" wrappingWidth="170.13671875">
                <VBox.margin>
                   <Insets bottom="20.0" top="10.0" />
                </VBox.margin>

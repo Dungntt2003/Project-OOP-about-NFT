@@ -7,18 +7,20 @@ public class Tweet extends NFT {
 	private String reposts;
 	private String likes;
 	private String views;
+	private String text;
 
 	public Tweet() {
 
 	}
 
 	public Tweet(String author, String date, ArrayList<String> tag, String replies, String reposts, String likes,
-			String views) {
+			String views, String text) {
 		super(author, date, tag);
 		this.replies = replies;
 		this.reposts = reposts;
 		this.likes = likes;
 		this.views = views;
+		this.text = text;
 	}
 
 	public String getReplies() {
@@ -51,6 +53,14 @@ public class Tweet extends NFT {
 
 	public void setViews(String views) {
 		this.views = views;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
 	}
 
 }
