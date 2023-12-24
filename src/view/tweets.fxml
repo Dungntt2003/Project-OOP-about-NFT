@@ -31,7 +31,7 @@
         </columns>
       </TableView>
       <TextField fx:id="searchText" layoutX="110.0" layoutY="69.0" prefHeight="25.0" prefWidth="614.0" promptText="Keyword : hashtag, title, author, date, .." />
-      <VBox alignment="TOP_CENTER" layoutX="773.0" layoutY="110.0" prefHeight="385.0" prefWidth="149.0">
+      <VBox alignment="TOP_CENTER" layoutX="773.0" layoutY="110.0" maxHeight="600.0" prefHeight="385.0" prefWidth="149.0">
          <children>
             <ImageView fitHeight="138.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>

@@ -35,7 +35,7 @@ public class GetTweet extends GetNFT {
 				ArrayList<String> hashtagList = new ArrayList<String>();
 				hashtagList.add(hashtahString);
 				tweet.setTag(hashtagList);
-				String text = (String) jsonObject.get("text");
+				String text = (String) jsonObject.get("content");
 				tweet.setText(text);
 				tweetList.add(tweet);
 			}
